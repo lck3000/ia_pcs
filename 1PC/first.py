@@ -1,4 +1,5 @@
 # -*- coding: cp1252 -*-
+import pandas as pd
 
 def cube_checker(num):
     if (num % 3) == 0:
@@ -15,4 +16,13 @@ def cube_checker(num):
         print("La propiedad del número 153 solo se cumple para números multiplos de 3")
         pass
 
-print(cube_checker(40))
+#print(cube_checker(40))
+df=pd.DataFrame(columns=['num','ciclos'])
+
+for x in range(1,100000,1):
+    df.at[x,'num'] = x*3
+    df.at[x,'ciclos'] = cube_checker(x*3)
+
+df.to_excel('cubo153.xlsx')
+    
+
